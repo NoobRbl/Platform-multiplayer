@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Press Start 2P', cursive; /* Font Retro */
+}
+
+body {
+    background-color: #050505;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    touch-action: none;
+    user-select: none;
+}
+
+canvas {
+    background: radial-gradient(circle, #1a1a2e 0%, #000000 100%);
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
+    border: 2px solid #333;
+}
+
+/* UI STYLING */
+.ui-container {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.player-hud {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.name {
+    color: white;
+    font-size: 12px;
+    text-shadow: 2px 2px 0 #000;
+    margin-bottom: 5px;
+}
+
+.bar-container {
+    width: 100%;
+    height: 20px;
+    background: #333;
+    border: 2px solid white;
+    transform: skewX(-20deg); /* Style nghiêng fighting game */
+    overflow: hidden;
+}
+
+.health-fill {
+    height: 100%;
+    width: 100%;
+    background: #00ffcc;
+    transition: width 0.1s;
+}
+
+.p2-hud .health-fill { background: #ff3333; }
+.p2-hud { align-items: flex-end; }
+.p2-hud .bar-container { transform: skewX(20deg); }
+
+.meter-container {
+    width: 80%;
+    height: 8px;
+    background: #222;
+    margin-top: 2px;
+    transform: skewX(-20deg);
+}
+
+.meter-fill {
+    height: 100%;
+    width: 0%;
+    background: gold;
+    box-shadow: 0 0 10px gold;
+}
+
+.percent-text {
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.p1-hud .percent-text { color: #00ffcc; }
+.p2-hud .percent-text { color: #ff3333; }
+
+.timer {
+    font-size: 40px;
+    color: white;
+    background: rgba(0,0,0,0.5);
+    padding: 10px;
+    border: 2px solid white;
+}
+
+.tutorial-overlay {
+    position: absolute;
+    bottom: 20px;
+    color: rgba(255,255,255,0.5);
+    font-size: 10px;
+    width: 100%;
+    text-align: center;
+    pointer-events: none;
+}
+
+/* MOBILE CONTROLS */
+.mobile-controls {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 20;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 20px;
+}
+
+.joystick-area {
+    width: 120px; height: 120px;
+    background: rgba(255,255,255,0.1);
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    position: relative;
+    pointer-events: auto;
+    margin-bottom: 20px;
+}
+
+.joystick-stick {
+    width: 50px; height: 50px;
+    background: #00ffcc;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px #00ffcc;
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    pointer-events: auto;
+    margin-bottom: 20px;
+    align-items: flex-end;
+}
+
+.skill-row, .main-row {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    border-radius: 50%;
+    border: 2px solid white;
+    color: white;
+    font-weight: bold;
+    font-size: 10px;
+    box-shadow: 0 4px 0 #000;
+}
+
+.btn:active { transform: translateY(4px); box-shadow: none; }
+
+.btn-attack { width: 70px; height: 70px; background: #ff4757; font-size: 12px; }
+.btn-jump { width: 60px; height: 60px; background: #2ed573; }
+.btn-shield { width: 50px; height: 50px; background: #3742fa; }
+.btn-skill { width: 45px; height: 45px; background: #ffa502; }
+.btn-ult { width: 50px; height: 50px; background: #8e44ad; box-shadow: 0 0 10px #8e44ad; animation: pulse 1s infinite; }
+
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+
+/* Ẩn control trên PC màn hình to */
+@media (min-width: 1024px) {
+    /* .mobile-controls { display: none; } */
+}
