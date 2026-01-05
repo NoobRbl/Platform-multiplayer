@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>STICKMAN AERO-FIGHTER</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="ui-container">
+        <div class="player-hud p1-hud">
+            <div class="name">ZEPHYR <span class="status-text" id="p1-status"></span></div>
+            <div class="bar-container">
+                <div class="health-fill" id="p1-health"></div>
+            </div>
+            <div class="meter-container">
+                <div class="meter-fill" id="p1-meter"></div>
+            </div>
+            <div class="percent-text" id="p1-percent">0%</div>
+        </div>
+        
+        <div class="timer" id="timer">60</div>
+
+        <div class="player-hud p2-hud">
+            <div class="name">GOLIATH (CPU)</div>
+            <div class="bar-container">
+                <div class="health-fill" id="p2-health"></div>
+            </div>
+            <div class="percent-text" id="p2-percent">0%</div>
+        </div>
+    </div>
+
+    <div class="tutorial-overlay">
+        PC: WASD (Move) | SPACE (Attack) | J (Skill 1) | K (Skill 2) | L (ULTIMATE) | S (Shield) | SHIFT (Dash)
+    </div>
+
+    <canvas id="gameCanvas"></canvas>
+
+    <div class="mobile-controls">
+        <div class="joystick-area" id="joystick-base">
+            <div class="joystick-stick" id="joystick-stick"></div>
+        </div>
+
+        <div class="action-buttons">
+            <div class="skill-row">
+                <button class="btn btn-ult" id="btn-ult">ULT</button>
+                <button class="btn btn-skill" id="btn-s2">S2</button>
+                <button class="btn btn-skill" id="btn-s1">S1</button>
+            </div>
+            <div class="main-row">
+                <button class="btn btn-shield" id="btn-shield">DEF</button>
+                <button class="btn btn-jump" id="btn-jump">JUMP</button>
+                <button class="btn btn-attack" id="btn-attack">ATK</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
